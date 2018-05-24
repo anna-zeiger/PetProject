@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+   : MyString
+  name: MyString
+  rating: 1
+  accepts10bis: false
+  address: MyString
+  maxDeliveryTime: 1
+
+two:
+   : MyString
+  name: MyString
+  rating: 1
+  accepts10bis: false
+  address: MyString
+  maxDeliveryTime: 1

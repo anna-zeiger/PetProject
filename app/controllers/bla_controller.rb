@@ -1,0 +1,2 @@
+class BlaController < ApplicationController
+end
