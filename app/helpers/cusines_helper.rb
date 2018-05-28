@@ -1,0 +1,2 @@
+module CusinesHelper
+end

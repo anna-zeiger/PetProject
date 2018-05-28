@@ -1,0 +1,22 @@
+<%= form_with(model: cusine, local: true) do |form| %>
+  <% if cusine.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cusine.errors.count, "error") %> prohibited this cusine from being saved:</h2>
+
+      <ul>
+      <% cusine.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

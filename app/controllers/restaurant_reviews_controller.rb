@@ -7,14 +7,24 @@ class RestaurantReviewsController < ApplicationController
     @restaurant_reviews = RestaurantReview.all
   end
 
+  def by_restaurant
+    @restaurant_reviews = RestaurantReview.where(restaurant_id: params[:id])
+  end
+
   # GET /restaurant_reviews/1
   # GET /restaurant_reviews/1.json
   def show
+    RestaurantReview.find(params[:id])
   end
 
   # GET /restaurant_reviews/new
   def new
     @restaurant_review = RestaurantReview.new
+  end
+
+  def new_by_retaurant
+    @restaurant_review = RestaurantReview.new
+    @restaurant_review.restaurant_id = params[:id]
   end
 
   # GET /restaurant_reviews/1/edit
@@ -25,7 +35,6 @@ class RestaurantReviewsController < ApplicationController
   # POST /restaurant_reviews.json
   def create
     @restaurant_review = RestaurantReview.new(restaurant_review_params)
-    @restaurnar =
 
     respond_to do |format|
       if @restaurant_review.save
@@ -70,6 +79,6 @@ class RestaurantReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_review_params
-      params.require(:restaurant_review).permit(:reviewer_name, :rating, :comment)
+      params.require(:restaurant_review).permit(:reviewer_name, :rating, :comment, :restaurant_id)
     end
 end

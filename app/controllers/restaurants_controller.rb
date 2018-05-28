@@ -26,6 +26,7 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   # POST /restaurants.json
   def create
+
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|
@@ -64,6 +65,14 @@ class RestaurantsController < ApplicationController
     end
   end
 
+  # POST /restaurants/1/review
+  # POST /restaurants/1/review.json
+  def add_restaurant_review
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant_reviews = @restaurant.restaurant_reviews
+    @new_review = render :controller => RestaurantReviewsController, :action => :create, :restaurant_id => @restaurant.id
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_restaurant
@@ -72,6 +81,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit( :name, :rating, :accepts10bis, :address, :maxDeliveryTime)
+      params.require(:restaurant).permit( :name, :accepts10bis, :address, :maxDeliveryTime, :cusine_id)
     end
 end
