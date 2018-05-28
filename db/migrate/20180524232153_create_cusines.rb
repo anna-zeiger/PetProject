@@ -1,6 +1,6 @@
-class CreateCusines < ActiveRecord::Migration[5.2]
+class CreateCuisines < ActiveRecord::Migration[5.2]
   def change
-    create_table :cusines do |t|
+    create_table :cuisines do |t|
       t.string :name
       t.timestamps
     end

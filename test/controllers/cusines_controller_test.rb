@@ -2,7 +2,7 @@ require 'test_helper'
 
 class CusinesControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @cusine = cusines(:one)
+    @cuisine = cusines(:one)
   end
 
   test "should get index" do
@@ -17,30 +17,30 @@ class CusinesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create cusine" do
     assert_difference('Cusine.count') do
-      post cusines_url, params: { cusine: {  name: @cusine. name, reference: @cusine.reference } }
+      post cusines_url, params: {cuisine: {name: @cuisine. name, reference: @cuisine.reference } }
     end
 
-    assert_redirected_to cusine_url(Cusine.last)
+    assert_redirected_to cusine_url(Cuisine.last)
   end
 
   test "should show cusine" do
-    get cusine_url(@cusine)
+    get cusine_url(@cuisine)
     assert_response :success
   end
 
   test "should get edit" do
-    get edit_cusine_url(@cusine)
+    get edit_cusine_url(@cuisine)
     assert_response :success
   end
 
   test "should update cusine" do
-    patch cusine_url(@cusine), params: { cusine: {  name: @cusine. name, reference: @cusine.reference } }
+    patch cusine_url(@cuisine), params: {cuisine: {name: @cuisine. name, reference: @cuisine.reference } }
     assert_redirected_to cusine_url(@cusine)
   end
 
   test "should destroy cusine" do
     assert_difference('Cusine.count', -1) do
-      delete cusine_url(@cusine)
+      delete cusine_url(@cuisine)
     end
 
     assert_redirected_to cusines_url

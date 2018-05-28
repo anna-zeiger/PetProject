@@ -10,25 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_26_165151) do
+ActiveRecord::Schema.define(version: 2018_05_28_181200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "cusines", force: :cascade do |t|
+  create_table "cuisines", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "restaurant_reviews", force: :cascade do |t|
-    t.string "reviewer_name"
-    t.integer "rating"
-    t.text "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.bigint "restaurant_id"
-    t.index ["restaurant_id"], name: "index_restaurant_reviews_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -38,10 +28,20 @@ ActiveRecord::Schema.define(version: 2018_05_26_165151) do
     t.integer "maxDeliveryTime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "cusine_id"
-    t.index ["cusine_id"], name: "index_restaurants_on_cusine_id"
+    t.bigint "cuisine_id"
+    t.index ["cuisine_id"], name: "index_restaurants_on_cusine_id"
   end
 
-  add_foreign_key "restaurant_reviews", "restaurants"
-  add_foreign_key "restaurants", "cusines"
+  create_table "reviews", force: :cascade do |t|
+    t.string "reviewer_name"
+    t.integer "rating"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_reviews_on_restaurant_id"
+  end
+
+  add_foreign_key "restaurants", "cuisines"
+  add_foreign_key "reviews", "restaurants"
 end
