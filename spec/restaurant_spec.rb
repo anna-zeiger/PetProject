@@ -9,6 +9,7 @@ RSpec.describe RestaurantsController, type: :controller do
         get :index
         restaurants = JSON.parse(response.body)
         expect(assigns(:restaurants)).to eq([restaurant])
+      #   dddd
       end
     end
   end
