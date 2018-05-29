@@ -2,21 +2,16 @@
 
 require 'rails_helper'
 
-RSpec.describe ReviewsController, type: :controller do
-  describe "GET index" do
-    it "has a 200 status code" do
-      get :index
-      expect(response.status).to eq(200)
-    end
-  end
-
+RSpec.describe Review, type: :model do
   describe '.create' do
     context 'an italian restaurant' do
       context
       let(:cuisine) { FactoryBot.create(:cuisine) }
       let(:restaurant) { FactoryBot.create(:restaurant, cuisine: cuisine) }
+
       it 'should have an italian cuisine' do
-        expect(restaurant.cuisine.name).to eq("Italian")
+        byebug
+        expect(restaurant.cuisine.name).to eq(`Italian`)
       end
     end
   end
@@ -34,7 +29,7 @@ RSpec.describe ReviewsController, type: :controller do
   end
 
   describe '.create' do
-    context 'a restaurant with fie reviews' do
+    context 'a restaurant with few reviews' do
       let(:cuisine) { FactoryBot.create(:cuisine) }
       let(:restaurant) { FactoryBot.create(:restaurant, cuisine: cuisine) }
       let!(:review) { FactoryBot.create(:review, rating: 1, restaurant: restaurant) }

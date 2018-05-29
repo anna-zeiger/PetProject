@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :add_restaurant_review]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -26,7 +26,6 @@ class RestaurantsController < ApplicationController
   # POST /restaurants
   # POST /restaurants.json
   def create
-
     @restaurant = Restaurant.new(restaurant_params)
 
     respond_to do |format|
@@ -45,6 +44,7 @@ class RestaurantsController < ApplicationController
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
+
         format.html { redirect_to @restaurant, notice: 'Restaurant was successfully updated.' }
         format.json { render :show, status: :ok, location: @restaurant }
       else
@@ -74,13 +74,13 @@ class RestaurantsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_restaurant
-      @restaurant = Restaurant.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def restaurant_params
-      params.require(:restaurant).permit( :name, :accepts_10_bis, :address, :max_delivery_time, :cuisine_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def restaurant_params
+    params.require(:restaurant).permit(:name, :accepts_10_bis, :address, :max_delivery_time, :cuisine_id)
+  end
 end
