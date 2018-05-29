@@ -69,7 +69,8 @@ class RestaurantsController < ApplicationController
   # POST /restaurants/1/review.json
   def add_restaurant_review
     @restaurant_reviews = @restaurant.restaurant_reviews
-    @new_review = render :controller => ReviewsController, :action => :create, :restaurant_id => @restaurant.id
+    @new_review = render controller: ReviewsController, action: :create,
+                         restaurant_id: @restaurant.id
   end
 
   private
@@ -80,6 +81,6 @@ class RestaurantsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
-      params.require(:restaurant).permit( :name, :accepts10bis, :address, :maxDeliveryTime, :cusine)
+      params.require(:restaurant).permit( :name, :accepts_10_bis, :address, :max_delivery_time, :cuisine_id)
     end
 end

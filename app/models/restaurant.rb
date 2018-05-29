@@ -1,6 +1,7 @@
 class Restaurant < ApplicationRecord
-  validates :maxDeliveryTime, numericality: {only_integer: true, greater_than_or_equal_to: 15,
-                                             less_than_or_equal_to: 120}
+  validates :max_delivery_time, numericality: { only_integer: true,
+                                                greater_than_or_equal_to: 15,
+                                                less_than_or_equal_to: 120 }
   has_many :reviews, dependent: :destroy
   belongs_to :cuisine
 
