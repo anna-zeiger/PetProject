@@ -10,8 +10,7 @@ RSpec.describe Review, type: :model do
       let(:restaurant) { FactoryBot.create(:restaurant, cuisine: cuisine) }
 
       it 'should have an italian cuisine' do
-        byebug
-        expect(restaurant.cuisine.name).to eq(`Italian`)
+        expect(restaurant.cuisine.name).to eq('Italian')
       end
     end
   end
