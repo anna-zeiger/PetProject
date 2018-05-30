@@ -20,7 +20,7 @@ class RestaurantReviewsControllerTest < ActionDispatch::IntegrationTest
       post restaurant_reviews_url, params: { restaurant_review: {  reviewer_name: @restaurant_review. reviewer_name, comment: @restaurant_review.comment, rating: @restaurant_review.rating } }
     end
 
-    assert_redirected_to restaurant_review_url(RestaurantReview.last)
+    assert_redirected_to restaurant_review_url(Review.last)
   end
 
   test "should show restaurant_review" do

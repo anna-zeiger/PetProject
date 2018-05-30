@@ -1,11 +1,11 @@
 class Restaurant < ApplicationRecord
-  validates_inclusion_of :maxDeliveryTime, :in => 15..120
-  has_many :restaurant_reviews, dependent: :destroy
-  belongs_to :cusine
-  accepts_nested_attributes_for :restaurant_reviews
-  accepts_nested_attributes_for :cusine
+  validates :max_delivery_time, numericality: { only_integer: true,
+                                                greater_than_or_equal_to: 15,
+                                                less_than_or_equal_to: 120 }
+  has_many :reviews, dependent: :destroy
+  belongs_to :cuisine
 
   def rating
-    restaurant_reviews.any? ? restaurant_reviews.average(:rating) : 0
+    reviews.any? ? reviews.average(:rating).to_i : 0
   end
 end

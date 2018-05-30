@@ -2,7 +2,7 @@ require "application_system_test_case"
 
 class CusinesTest < ApplicationSystemTestCase
   setup do
-    @cusine = cusines(:one)
+    @cuisine = cusines(:one)
   end
 
   test "visiting the index" do
@@ -15,7 +15,7 @@ class CusinesTest < ApplicationSystemTestCase
     click_on "New Cusine"
 
     fill_in " Name", with: @cusine. name
-    fill_in "Reference", with: @cusine.reference
+    fill_in "Reference", with: @cuisine.reference
     click_on "Create Cusine"
 
     assert_text "Cusine was successfully created"
@@ -26,8 +26,8 @@ class CusinesTest < ApplicationSystemTestCase
     visit cusines_url
     click_on "Edit", match: :first
 
-    fill_in " Name", with: @cusine. name
-    fill_in "Reference", with: @cusine.reference
+    fill_in " Name", with: @cuisine. name
+    fill_in "Reference", with: @cuisine.reference
     click_on "Update Cusine"
 
     assert_text "Cusine was successfully updated"
